@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elijah Hartono | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --darker-bg: #0d0d0d;
+            --card-bg: #1e1e1e;
+            --card-hover: #2a2a2a;
+            --primary: #4dabf7;
+            --secondary: #51cf66;
+            --accent: #ffd43b;
+            --text: #e9ecef;
+            --text-secondary: #adb5bd;
+            --border: #343a40;
+            --section-gap: 100px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: var(--dark-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(29, 78, 216, 0.1) 0%, transparent 20%),
+                        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 20%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(18, 18, 18, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .tag {
+            background: linear-gradient(90deg, rgba(77, 171, 247, 0.2), rgba(81, 207, 102, 0.2));
+            color: var(--text);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(77, 171, 247, 0.3);
+        }
+        
+        .tag i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        /* Section Styling */
+        section {
+            padding: var(--section-gap) 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+        }
+        
+        /* Experience Section */
+        .experience-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--card-hover);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .experience-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .experience-card h4 {
+            font-size: 1.3rem;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+        
+        .experience-card .date {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .experience-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .experience-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .experience-card ul li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .experience-card ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .experience-card ul li::before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: var(--primary);
+            font-size: 1.5rem;
+            top: 5px;
+        }
+        
+        /* Volunteering Section */
+        .volunteering-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .volunteer-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .volunteer-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--card-hover);
+        }
+        
+        .volunteer-card h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .volunteer-card h4 {
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+        
+        .volunteer-card .date {
+            background-color: rgba(81, 207, 102, 0.1);
+            color: var(--secondary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .volunteer-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .volunteer-card .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .volunteer-card .skill {
+            background-color: rgba(77, 171, 247, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Education Section */
+        .education-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .education-info {
+            flex: 1;
+        }
+        
+        .education-info h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .education-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .education-info .ranking {
+            background-color: rgba(255, 212, 59, 0.1);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .education-info p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .gpa-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+        }
+        
+        .gpa-table th, .gpa-table td {
+            padding: 12px 15px;
+            text-align: center;
+        }
+        
+        .gpa-table th {
+            background-color: rgba(77, 171, 247, 0.2);
+            color: var(--text);
+        }
+        
+        .gpa-table tr:nth-child(even) {
+            background-color: rgba(77, 171, 247, 0.05);
+        }
+        
+        .gpa-table tr:hover {
+            background-color: rgba(77, 171, 247, 0.1);
+        }
+        
+        .experiences {
+            margin-top: 40px;
+        }
+        
+        .experience-item {
+            margin-bottom: 20px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .experience-item::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        .experience-item h5 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+        
+        .experience-item p {
+            color: var(--text-secondary);
+        }
+        
+        /* Arts Section */
+        .arts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .instrument-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .instrument-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--card-hover);
+        }
+        
+        .instrument-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .instrument-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        
+        .instrument-card .level {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+        }
+        
+        /* Certifications Section */
+        .certs-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .cert-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--card-hover);
+        }
+        
+        .cert-card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .cert-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        
+        .cert-card p {
+            color: var(--text-secondary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            color: var(--text);
+            padding: 50px 0 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        
+        .mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+        
+        .mode-toggle:hover {
+            background-color: var(--card-hover);
+            transform: rotate(15deg);
+        }
+        
+        .mode-toggle i {
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .education-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .tag {
+                font-size: 0.8rem;
+                padding: 6px 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .volunteering-grid, .arts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            .mode-toggle {
+                width: 40px;
+                height: 40px;
+                top: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mode Toggle -->
+    <div class="mode-toggle" id="modeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">E<span>H</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#volunteering">Volunteering</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#arts">Arts</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Elijah Hartono</h1>
+                <h2>Code Sensei • Student • Volunteer</h2>
+                <div class="tags">
+                    <div class="tag"><i class="fas fa-graduation-cap"></i> GPA: 4.1-4.2</div>
+                    <div class="tag"><i class="fas fa-heartbeat"></i> CPR Certified</div>
+                    <div class="tag"><i class="fas fa-music"></i> Multi-Instrumentalist</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Work Experience</h2>
+                <p>Professional journey and career achievements</p>
+            </div>
+            
+            <div class="experience-card">
+                <h3>Code Sensei</h3>
+                <h4>Code Ninjas Downingtown</h4>
+                <p>Working both full and part-time as a Code Sensei, bringing technology education to young minds through various engaging programs and community outreach.</p>
+                <ul>
+                    <li><strong>Teaching & Mentoring</strong> - Guided students through coding challenges and IMPACT program</li>
+                    <li><strong>Community Outreach</strong> - Promoted programs at libraries and schools</li>
+                    <li><strong>Summer Camps</strong> - Organized and ran engaging summer coding camps</li>
+                    <li><strong>Software Development</strong> - Worked with various software tools and platforms</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteering Section -->
+    <section id="volunteering">
+        <div class="container">
+            <div class="section-header">
+                <h2>Volunteering</h2>
+                <p>Contributions to community and educational initiatives</p>
+            </div>
+            
+            <div class="volunteering-grid">
+                <div class="volunteer-card">
+                    <h3>Youth Helper</h3>
+                    <h4>Calvary Chapel Chester Springs Church - Sunday School</h4>
+                    <div class="date">Sep 1-8, 2024</div>
+                    <p>Volunteered as a Youth Helper, working with kids and helping them pay attention to the teacher.</p>
+                    <div class="skills">
+                        <div class="skill">Teaching Support</div>
+                        <div class="skill">Classroom Management</div>
+                    </div>
+                </div>
+                
+                <div class="volunteer-card">
+                    <h3>Youth Helper</h3>
+                    <h4>Calvary Chapel Chester Springs Church - Vacation Bible School</h4>
+                    <div class="date">Jun 23-27, 2025</div>
+                    <p>Volunteered as a Youth Helper, helping the teacher and ensuring kids pay attention. Also helped with activities like game time and teaching the bible.</p>
+                    <div class="skills">
+                        <div class="skill">Bible Teaching</div>
+                        <div class="skill">Child Engagement</div>
+                        <div class="skill">Activity Coordination</div>
+                    </div>
+                </div>
+                
+                <div class="volunteer-card">
+                    <h3>STEM Teacher</h3>
+                    <h4>Downingtown STEM Academy for STEM C.H.A.N.G.E.</h4>
+                    <div class="date">Jan 27, 2025</div>
+                    <p>Taught a group of around 12 elementary school students the basics of the engineering design process and architecture. Wrote my own curriculum.</p>
+                    <div class="skills">
+                        <div class="skill">Curriculum Development</div>
+                        <div class="skill">STEM Education</div>
+                    </div>
+                </div>
+                
+                <div class="volunteer-card">
+                    <h3>Stage Crew Member</h3>
+                    <h4>Downingtown STEM Academy's Player's Troupe</h4>
+                    <div class="date">Jan 9 - Apr 4, 2025</div>
+                    <p>Volunteered as part of the stage crew. Built sets, worked with woodworking and saws. Made props and moved stuff during the actual play.</p>
+                    <div class="skills">
+                        <div class="skill">Set Design</div>
+                        <div class="skill">Prop Making</div>
+                        <div class="skill">Woodworking</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+                <p>Academic background and achievements</p>
+            </div>
+            
+            <div class="education-content">
+                <div class="education-info">
+                    <h3>Downingtown STEM Academy</h3>
+                    <h4>Class of 2025</h4>
+                    <div class="ranking">#46 High School in the USA</div>
+                    <p>International Baccalaureate World School</p>
+                    
+                    <h4>GPA Progression</h4>
+                    <table class="gpa-table">
+                        <tr>
+                            <th>Quarter</th>
+                            <th>GPA</th>
+                        </tr>
+                        <tr>
+                            <td>Q1</td>
+                            <td>4.2</td>
+                        </tr>
+                        <tr>
+                            <td>Q2</td>
+                            <td>4.1</td>
+                        </tr>
+                        <tr>
+                            <td>Q3</td>
+                            <td>4.2</td>
+                        </tr>
+                        <tr>
+                            <td>Q4</td>
+                            <td>4.1</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="experiences">
+                        <h4>Key Experiences</h4>
+                        <div class="experience-item">
+                            <h5>Trip to Automated Financial Systems with FBLA</h5>
+                            <p>Met CEO and executives</p>
+                        </div>
+                        <div class="experience-item">
+                            <h5>West Chester University Winter Day Camp</h5>
+                            <p>College experience simulation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arts Section -->
+    <section id="arts">
+        <div class="container">
+            <div class="section-header">
+                <h2>Performance Arts</h2>
+                <p>Musical talents and accomplishments</p>
+            </div>
+            
+            <div class="arts-grid">
+                <div class="instrument-card">
+                    <i class="fas fa-music"></i>
+                    <h3>Violin</h3>
+                    <div class="level">Advanced (85%)</div>
+                    <p>Playing since 3rd Grade</p>
+                    <p>8th grade honors orchestra 2nd chair after playing exams</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="instrument-card">
+                    <i class="fas fa-music"></i>
+                    <h3>Flute</h3>
+                    <div class="level">Advanced (85%)</div>
+                    <p>Playing since 3rd Grade</p>
+                    <p>Consistent performer in school ensembles</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="instrument-card">
+                    <i class="fas fa-music"></i>
+                    <h3>Piano</h3>
+                    <div class="level">Beginner (35%)</div>
+                    <p>Started recently</p>
+                    <p>Self-taught, expanding musical repertoire</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 35%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <div class="section-header">
+                <h2>Certifications</h2>
+                <p>Professional qualifications and training</p>
+            </div>
+            
+            <div class="certs-container">
+                <div class="cert-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>CPR Certification</h3>
+                    <p>Certified in Cardiopulmonary Resuscitation to provide emergency cardiac care.</p>
+                </div>
+                
+                <div class="cert-card">
+                    <i class="fas fa-first-aid"></i>
+                    <h3>First Aid</h3>
+                    <p>Trained in basic first aid procedures and emergency response techniques.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Elijah Hartono</div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#volunteering">Volunteering</a>
+                    <a href="#education">Education</a>
+                    <a href="#arts">Arts</a>
+                    <a href="#certifications">Certifications</a>
+                </div>
+                <div class="copyright">© 2025 Elijah Hartono. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+                header.style.background = 'rgba(18, 18, 18, 0.95)';
+            } else {
+                header.style.boxShadow = 'none';
+                header.style.background = 'rgba(18, 18, 18, 0.9)';
+            }
+        });
+        
+        // Dark mode toggle functionality
+        const modeToggle = document.getElementById('modeToggle');
+        const modeIcon = modeToggle.querySelector('i');
+        
+        // Check for saved theme preference or respect OS preference
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const currentTheme = localStorage.getItem('theme');
+        
+        if (currentTheme === 'light' || (!currentTheme && !prefersDarkScheme.matches)) {
+            document.body.classList.add('light-mode');
+            modeIcon.classList.remove('fa-sun');
+            modeIcon.classList.add('fa-moon');
+        } else {
+            modeIcon.classList.remove('fa-moon');
+            modeIcon.classList.add('fa-sun');
+        }
+        
+        modeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+            
+            if (document.body.classList.contains('light-mode')) {
+                modeIcon.classList.remove('fa-sun');
+                modeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                modeIcon.classList.remove('fa-moon');
+                modeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
